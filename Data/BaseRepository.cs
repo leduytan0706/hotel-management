@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Data
 {
-    internal class BaseRepository<T> where T : class
+    public class BaseRepository<T> where T : class
     {
         protected readonly HotelDbContext _context;
         protected readonly DbSet<T> _dbSet;

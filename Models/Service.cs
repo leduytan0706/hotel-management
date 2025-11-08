@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    internal class Service
+    public class Service
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,5 +17,7 @@ namespace HotelManagement.Models
         public string ServiceName { get; set; }
         public string Description { get; set; }
         public decimal UnitPrice { get; set; }
+
+        public virtual ICollection<BookingService> BookingServices { get; set; }
     }
 }

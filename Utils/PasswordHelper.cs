@@ -8,14 +8,14 @@ namespace HotelManagement.Utils
 {
     internal class PasswordHelper
     {
-        public static string EncryptPassword(string password)
-        {
+        //public static string EncryptPassword(string password)
+        //{
 
-        }
+        //}
 
-        public static bool ComparePassword(string inputPassword, string hashedPassword)
-        {
+        //public static bool ComparePassword(string inputPassword, string hashedPassword)
+        //{
 
-        }
+        //}
     }
 }

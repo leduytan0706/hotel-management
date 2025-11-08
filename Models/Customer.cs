@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    internal class Customer
+    public class Customer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,6 +18,10 @@ namespace HotelManagement.Models
         public string IdNumber { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+
+        public virtual ICollection<Booking> Bookings { get; set; }
+
+        public virtual Booking Booking { get; set; }
 
     }
 }

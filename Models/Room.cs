@@ -14,7 +14,7 @@ namespace HotelManagement.Models
         Free,
         UnderRepair
     }
-    internal class Room
+    public class Room
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,5 +23,10 @@ namespace HotelManagement.Models
         public int RoomTypeId { get; set; }
         public string Status { get; set; }
         public string Description { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public virtual RoomType Type { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

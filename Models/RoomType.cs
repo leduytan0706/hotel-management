@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    internal class RoomType
+    public class RoomType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,5 +16,7 @@ namespace HotelManagement.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal BasePricePerNight { get; set; }
+
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

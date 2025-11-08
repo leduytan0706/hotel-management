@@ -12,7 +12,7 @@ namespace HotelManagement.Models
         Manager,
         Receptionist
     }
-    internal class User
+    public class User
     {
         public int UserId { get; set; }
         public string PasswordHash { get; set; }
@@ -24,5 +24,7 @@ namespace HotelManagement.Models
         public string Address { get; set; }
         public string Email { get; set; }
         public string IdNumber { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

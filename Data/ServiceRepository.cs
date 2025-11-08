@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Data
 {
-    internal class ServiceRepository: BaseRepository<Service>
+    public class ServiceRepository: BaseRepository<Service>
     {
         public ServiceRepository(HotelDbContext context) : base(context) { }
 

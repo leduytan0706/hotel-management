@@ -15,7 +15,7 @@ namespace HotelManagement.Models
         CheckedOut,
         Cancelled
     }
-    internal class Booking
+    public class Booking
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,5 +27,10 @@ namespace HotelManagement.Models
         public DateTime CheckInDate { get; set; }
         public DateTime? CheckOutDate { get; set; }
         public BookingStatus Status { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual Room Room { get; set; }
+        public virtual ICollection<BookingService> BookingServices { get; set; }
+        public virtual Invoice Invoice { get; set; }
     }
 }

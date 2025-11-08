@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Models
 {
-    internal class ServiceType
+    public class ServiceType
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

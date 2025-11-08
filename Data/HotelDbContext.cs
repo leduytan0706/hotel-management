@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Data
 {
-    internal class HotelDbContext: DbContext
+    public class HotelDbContext: DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
-        public DbSet<ServiceRepository> Services { get; set; }
-        public DbSet<BookingRepository> Bookings { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
         public DbSet<BookingService> BookingServices { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<User> Users { get; set; }

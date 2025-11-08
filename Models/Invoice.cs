@@ -13,7 +13,7 @@ namespace HotelManagement.Models
         Finished,
         Unfinished
     }
-    internal class Invoice
+    public class Invoice
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

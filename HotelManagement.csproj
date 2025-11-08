@@ -73,6 +73,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202511081019550_InitialCreate.cs" />
+    <Compile Include="Migrations\202511081019550_InitialCreate.Designer.cs">
+      <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingService.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -89,6 +94,9 @@
     <Compile Include="Utils\Validator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511081019550_InitialCreate.resx">
+      <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
