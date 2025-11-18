@@ -12,7 +12,8 @@ namespace HotelManagement.Models
     {
         Booked,
         Free,
-        UnderRepair
+        UnderRepair,
+        Inactive
     }
     public class Room
     {
@@ -21,12 +22,17 @@ namespace HotelManagement.Models
         public int RoomId { get; set; }
         public string RoomNumber { get; set; }
         public int RoomTypeId { get; set; }
-        public string Status { get; set; }
-        public string Description { get; set; }
+        public RoomStatus Status { get; set; } = RoomStatus.Free;
 
+        public bool IsDeleted { get; set; } = false;
+        public string Description { get; set; }
+        public decimal DefaultPrice { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public int MaximumCapacity { get; set; }
 
         public virtual RoomType Type { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<RoomPrice> CustomPrices { get; set; }
     }
 }

@@ -49,5 +49,20 @@ namespace HotelManagement.Data
                 _context.SaveChanges();
             }
         }
+
+        public int InsertAndReturnId(T entity, string idFieldName = "Id")
+        {
+            _dbSet.Add(entity);
+            _context.SaveChanges();
+
+            // Lấy giá trị của thuộc tính "Id" nếu có
+            var idProperty = entity.GetType().GetProperty(idFieldName);
+            if (idProperty != null)
+            {
+                return (int)idProperty.GetValue(entity);
+            }
+
+            return 0; // nếu entity không có Id hoặc không phải int
+        }
     }
 }

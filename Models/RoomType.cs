@@ -16,7 +16,7 @@ namespace HotelManagement.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal BasePricePerNight { get; set; }
-
+        public int MaximumCapacity { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }

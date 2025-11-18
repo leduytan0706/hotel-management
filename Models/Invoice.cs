@@ -23,6 +23,7 @@ namespace HotelManagement.Models
         public decimal RoomCharge { get; set; }
         public decimal ServiceCharge { get; set; }
         public decimal TotalAmount { get; set; }
+        public decimal DiscountAmount { get; set; }
         public decimal PaidAmount { get; set; }
         public InvoiceStatus PaymentStatus { get; set; }
     }

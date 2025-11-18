@@ -56,12 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Interfaces\IRoomPriceService.cs" />
+    <Compile Include="Business\Interfaces\IRoomService.cs" />
+    <Compile Include="Business\Interfaces\IRoomTypeService.cs" />
+    <Compile Include="Business\Services\RoomPriceService.cs" />
+    <Compile Include="Business\Services\RoomService.cs" />
+    <Compile Include="Business\Services\RoomTypeService.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\BookingRepository.cs" />
     <Compile Include="Data\BookingServiceRepository.cs" />
     <Compile Include="Data\CustomerRepository.cs" />
     <Compile Include="Data\HotelDbContext.cs" />
     <Compile Include="Data\InvoiceRepository.cs" />
+    <Compile Include="Data\RoomPriceRepository.cs" />
     <Compile Include="Data\RoomRepository.cs" />
     <Compile Include="Data\RoomTypeRepository.cs" />
     <Compile Include="Data\ServiceRepository.cs" />
@@ -73,9 +80,37 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeDetailForm.Designer.cs">
+      <DependentUpon>RoomTypeDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeForm.Designer.cs">
+      <DependentUpon>RoomTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoomType\RoomTypeSaveForm.Designer.cs">
+      <DependentUpon>RoomTypeSaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Room\RoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Room\RoomForm.Designer.cs">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202511081019550_InitialCreate.cs" />
     <Compile Include="Migrations\202511081019550_InitialCreate.Designer.cs">
       <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511110114026_InitialCreate1.cs" />
+    <Compile Include="Migrations\202511110114026_InitialCreate1.Designer.cs">
+      <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -83,6 +118,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomPrice.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ServiceType.cs" />
@@ -95,8 +131,23 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RoomType\RoomTypeDetailForm.resx">
+      <DependentUpon>RoomTypeDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RoomType\RoomTypeForm.resx">
+      <DependentUpon>RoomTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RoomType\RoomTypeSaveForm.resx">
+      <DependentUpon>RoomTypeSaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Room\RoomForm.resx">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511081019550_InitialCreate.resx">
       <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511110114026_InitialCreate1.resx">
+      <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,8 +173,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Forms\" />
+    <Folder Include="Business\Interfaces\NewFolder1\" />
+    <Folder Include="Forms\Auth\" />
+    <Folder Include="Forms\BookingService\" />
+    <Folder Include="Forms\Booking\" />
+    <Folder Include="Forms\RoomPrice\" />
+    <Folder Include="Forms\ServiceType\" />
+    <Folder Include="Forms\Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

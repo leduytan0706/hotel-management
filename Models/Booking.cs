@@ -22,6 +22,7 @@ namespace HotelManagement.Models
         public int BookingId { get; set; }
         public int CustomerId { get; set; }
         public int RoomId { get; set; }
+        public decimal BookedPrice { get; set; }
         public DateTime BookingDate { get; set; }
         public DateTime CancelDate { get; set; }
         public DateTime CheckInDate { get; set; }

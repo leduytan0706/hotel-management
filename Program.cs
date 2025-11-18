@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelManagement.Forms.Room;
+using HotelManagement.Forms.RoomType;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace HotelManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new RoomForm());
         }
     }
 }
