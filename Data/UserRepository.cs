@@ -15,5 +15,10 @@ namespace HotelManagement.Data
         {
             return _dbSet.Where(b => b.Role.Equals(userRole)).ToList();
         }
+
+        public User GetUserByUsername(string username)
+        {
+            return _dbSet.FirstOrDefault(u => u.Username.Equals(username));
+        }
     }
 }

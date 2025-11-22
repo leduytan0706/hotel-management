@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.Business.Interfaces
 {
-    internal interface AuthService
+    internal interface IBookingService
     {
     }
 }

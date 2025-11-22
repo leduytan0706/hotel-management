@@ -13,7 +13,8 @@ namespace HotelManagement.Models
         Booked,
         Free,
         UnderRepair,
-        Inactive
+        Inactive,
+        Occupied
     }
     public class Room
     {

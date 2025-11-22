@@ -22,7 +22,7 @@ namespace HotelManagement.Business.Services
             _roomTypeRepo = new RoomTypeRepository(context);
             _roomPriceRepo = new RoomPriceRepository(context);
         }
-        public bool CreateRoom(Room room, List<RoomPrice> roomPrices)
+        public bool CreateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices)
         {
             if (_repo.CheckExistsByRoomNumber(room.RoomNumber))
                 throw new Exception("Phòng này đã tồn tại!");
@@ -50,7 +50,24 @@ namespace HotelManagement.Business.Services
             
             return true;
         }
-        public bool UpdateRoom(int roomId, Room room, List<RoomPrice> roomPrices)
+
+        public bool CreateRoom(Room room)
+        {
+            if (_repo.CheckExistsByRoomNumber(room.RoomNumber))
+                throw new Exception("Phòng này đã tồn tại!");
+
+            var roomType = _roomTypeRepo.GetById(room.RoomTypeId);
+            if (roomType == null)
+                throw new Exception("Loại phòng không hợp lệ!");
+
+            room.Status = RoomStatus.Free;
+            room.CreatedAt = DateTime.Now;
+            room.UpdatedAt = DateTime.Now;
+
+            _repo.Insert(room);
+            return true;
+        }
+        public bool UpdateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices)
         {
             if (_repo.CheckExistsByRoomNumber(room.RoomNumber))
                 throw new Exception("Phòng này đã tồn tại!");
@@ -68,7 +85,7 @@ namespace HotelManagement.Business.Services
                 List<RoomPrice> pricesToRemove;
                 List<RoomPrice> pricesToUpdate;
 
-                var existingRoomPrices = _roomPriceRepo.GetPricesForRoom(roomId);
+                var existingRoomPrices = _roomPriceRepo.GetPricesForRoom(room.RoomId);
                 if (existingRoomPrices == null || existingRoomPrices.Any())
                 {
                     _roomPriceRepo.InsertMany(roomPrices);
@@ -93,7 +110,7 @@ namespace HotelManagement.Business.Services
                         {
                             throw new Exception($"Khoảng thời gian cho giá {price.PricePerNight} trùng lặp.");
                         }
-                        price.RoomId = roomId;
+                        price.RoomId = room.RoomId;
                     });
 
                     _roomPriceRepo.UpdateMany(pricesToUpdate);
@@ -109,6 +126,20 @@ namespace HotelManagement.Business.Services
                 throw new Exception("Cập nhật phòng không thành công.");
             }  
 
+        }
+
+        public bool UpdateRoom(Room room)
+        {
+            if (_repo.CheckExistsByRoomNumber(room.RoomNumber))
+                throw new Exception("Phòng này đã tồn tại!");
+
+            var roomType = _roomTypeRepo.GetById(room.RoomTypeId);
+            if (roomType == null)
+                throw new Exception("Loại phòng không hợp lệ!");
+
+            room.UpdatedAt = DateTime.Now;
+            _repo.Update(room);
+            return true;
         }
         public bool DeleteRoom(int roomId)
         {

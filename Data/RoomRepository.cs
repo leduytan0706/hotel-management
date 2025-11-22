@@ -41,6 +41,13 @@ namespace HotelManagement.Data
                 .Count() > 0;
         }
 
+        public Room GetByRoomNumber(string roomNumber)
+        {
+            return _dbSet
+                .Where(p => p.RoomNumber == roomNumber)
+                .FirstOrDefault();
+        }
+
         public int InsertAndReturnId(Room room)
         {
             return base.InsertAndReturnId(room, "RoomId");

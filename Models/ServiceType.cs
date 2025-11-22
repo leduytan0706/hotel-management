@@ -17,5 +17,8 @@ namespace HotelManagement.Models
         public string Description { get; set; }
 
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        public int ServiceCount { get; set; } = 0;
     }
 }

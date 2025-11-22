@@ -56,12 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Interfaces\IAuthService.cs" />
     <Compile Include="Business\Interfaces\IRoomPriceService.cs" />
     <Compile Include="Business\Interfaces\IRoomService.cs" />
     <Compile Include="Business\Interfaces\IRoomTypeService.cs" />
+    <Compile Include="Business\Interfaces\IServiceTypeService.cs" />
+    <Compile Include="Business\Interfaces\IUserService.cs" />
+    <Compile Include="Business\Services\AuthService.cs" />
     <Compile Include="Business\Services\RoomPriceService.cs" />
     <Compile Include="Business\Services\RoomService.cs" />
     <Compile Include="Business\Services\RoomTypeService.cs" />
+    <Compile Include="Business\Services\ServiceTypeService.cs" />
+    <Compile Include="Business\Services\UserService.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\BookingRepository.cs" />
     <Compile Include="Data\BookingServiceRepository.cs" />
@@ -79,6 +85,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Auth\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Auth\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RoomType\RoomTypeDetailForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +116,12 @@
     <Compile Include="Forms\Room\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Room\RoomSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Room\RoomSaveForm.Designer.cs">
+      <DependentUpon>RoomSaveForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202511081019550_InitialCreate.cs" />
     <Compile Include="Migrations\202511081019550_InitialCreate.Designer.cs">
       <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
@@ -111,6 +129,14 @@
     <Compile Include="Migrations\202511110114026_InitialCreate1.cs" />
     <Compile Include="Migrations\202511110114026_InitialCreate1.Designer.cs">
       <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511220302197_UpdateModels_01.cs" />
+    <Compile Include="Migrations\202511220302197_UpdateModels_01.Designer.cs">
+      <DependentUpon>202511220302197_UpdateModels_01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511220303479_UpdateModels_02.cs" />
+    <Compile Include="Migrations\202511220303479_UpdateModels_02.Designer.cs">
+      <DependentUpon>202511220303479_UpdateModels_02.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -125,11 +151,16 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\AuthState.cs" />
+    <Compile Include="Utils\ItemCombo.cs" />
     <Compile Include="Utils\MessageHelper.cs" />
     <Compile Include="Utils\PasswordHelper.cs" />
     <Compile Include="Utils\Validator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Auth\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomType\RoomTypeDetailForm.resx">
       <DependentUpon>RoomTypeDetailForm.cs</DependentUpon>
@@ -143,11 +174,20 @@
     <EmbeddedResource Include="Forms\Room\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Room\RoomSaveForm.resx">
+      <DependentUpon>RoomSaveForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511081019550_InitialCreate.resx">
       <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202511110114026_InitialCreate1.resx">
       <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511220302197_UpdateModels_01.resx">
+      <DependentUpon>202511220302197_UpdateModels_01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511220303479_UpdateModels_02.resx">
+      <DependentUpon>202511220303479_UpdateModels_02.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,12 +214,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\Interfaces\NewFolder1\" />
-    <Folder Include="Forms\Auth\" />
     <Folder Include="Forms\BookingService\" />
     <Folder Include="Forms\Booking\" />
     <Folder Include="Forms\RoomPrice\" />
     <Folder Include="Forms\ServiceType\" />
     <Folder Include="Forms\Service\" />
+    <Folder Include="Forms\User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -9,8 +9,11 @@ namespace HotelManagement.Business.Interfaces
 {
     public interface IRoomService
     {
-        bool CreateRoom(Room room, List<RoomPrice> roomPrices);
-        bool UpdateRoom(int roomId, Room room, List<RoomPrice> roomPrices);
+        bool CreateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices);
+        bool CreateRoom(Room room);
+
+        bool UpdateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices);
+        bool UpdateRoom(Room room);
         bool DeleteRoom(int roomId);
         IEnumerable<Room> GetAllRooms();
     }
