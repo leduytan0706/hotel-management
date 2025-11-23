@@ -31,5 +31,10 @@ namespace HotelManagement.Data
             _dbSet.AddRange(bookingServices);
             _context.SaveChanges();
         }
+
+        public IEnumerable<BookingService> GetByBookingId(int bookingId)
+        {
+            return _dbSet.Where(d => d.BookingId == bookingId).ToList();
+        }
     }
 }

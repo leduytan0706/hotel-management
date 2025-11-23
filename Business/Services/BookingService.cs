@@ -61,6 +61,7 @@ namespace HotelManagement.Business.Services
             customer.CreatedAt = DateTime.Now;
             customer.UpdatedAt = DateTime.Now;
             var customerId = _customerRepo.InsertAndReturnId(customer);
+            booking.CustomerId = customerId;
 
             this.CreateBooking(booking, bookingServices);
             return true;
@@ -130,10 +131,43 @@ namespace HotelManagement.Business.Services
             return true;
         }
 
-        public bool UpdateBooking(Booking booking)
+        public bool UpdateBooking(Booking booking, List<Models.BookingService> bookingServices)
         {
+            // 1. Set updated fields
             booking.UpdatedAt = DateTime.Now;
+
+            // 2. Update Booking
             _repo.Update(booking);
+
+            // 3. Update RoomSchedule (vì ngày CheckIn/CheckOut có thể thay đổi)
+            var existingSchedule = _roomScheduleRepo
+                .GetAll()
+                .Where(s => s.BookingId == booking.BookingId)
+                .FirstOrDefault();
+
+            if (existingSchedule != null)
+            {
+                existingSchedule.RoomId = booking.RoomId;
+                existingSchedule.StartDate = booking.CheckInDate.HasValue ? booking.CheckInDate.Value : DateTime.MinValue;
+                existingSchedule.EndDate = booking.CheckOutDate.HasValue ? booking.CheckOutDate.Value : DateTime.MinValue;
+                existingSchedule.Status = RoomStatus.Booked; // giữ trạng thái
+                existingSchedule.UpdatedAt = DateTime.Now;
+
+                _roomScheduleRepo.Update(existingSchedule);
+            }
+
+            // 4. Update BookingServices
+            BookingServiceService bookingServiceService = new BookingServiceService();
+
+            // Xóa dịch vụ cũ trước
+            bookingServiceService.DeleteByBookingId(booking.BookingId);
+
+            // Sau đó thêm lại dịch vụ mới
+            if (bookingServices != null && bookingServices.Count > 0)
+            {
+                bookingServiceService.CreateBookingServices(booking.BookingId, bookingServices);
+            }
+
             return true;
         }
 
@@ -155,12 +189,12 @@ namespace HotelManagement.Business.Services
 
         public List<Booking> GetAllBookings()
         {
-            return _repo.GetAll().ToList();
+            return _repo.GetAll().OrderByDescending(b => b.UpdatedAt).ToList();
         }
 
         public List<Booking> GetBookingsByCustomer(int customerId)
         {
-            return _repo.GetBookingsByCustomer(customerId).ToList();
+            return _repo.GetBookingsByCustomer(customerId).OrderByDescending(b => b.UpdatedAt).ToList();
         }
 
         public List<Booking> FilterBookings(
@@ -189,7 +223,47 @@ namespace HotelManagement.Business.Services
                     || (b.CheckInDate >= startDate && b.CheckInDate <= endDate)
                     || (b.CheckOutDate >= startDate && b.CheckOutDate <= endDate)
                     || (!status.HasValue || b.Status == status.Value)
-                ).ToList();
+                )
+                .OrderByDescending(b => b.UpdatedAt)
+                .ToList();
+        }
+
+        public string GetNewBookingNumber()
+        {
+            DateTime today = DateTime.Today;
+            string formattedDate = today.ToString("yyyyMMdd");
+            string prefix = "BKG" + formattedDate + "-";
+
+            var dailyBookings = _repo.GetAll()
+                                      .Where(b => b.BookingNumber.Contains(formattedDate))
+                                      .ToList(); 
+
+            int newNumber = 1;
+
+            if (dailyBookings.Any())
+            {
+                
+                var latestNumber = dailyBookings
+
+                    .Where(b => b.BookingNumber.StartsWith(prefix))
+                    .Select(b =>
+                    {
+
+                        string numberPart = b.BookingNumber.Split('-').LastOrDefault();
+
+                        if (int.TryParse(numberPart, out int number))
+                        {
+                            return number;
+                        }
+                        return 0; 
+                    })
+                    .Max();
+
+
+                newNumber = latestNumber + 1;
+            }
+
+            return prefix + newNumber.ToString("D3");
         }
     }
 }

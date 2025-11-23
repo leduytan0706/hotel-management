@@ -43,5 +43,15 @@ namespace HotelManagement.Business.Services
 
             return true;
         }
+
+        public bool DeleteByBookingId(int bookingId)
+        {
+            var items = _repo.GetByBookingId(bookingId).ToList();
+            foreach (var item in items)
+            {
+                _repo.Delete(item.BookingServiceId);
+            }
+            return true;
+        }
     }
 }

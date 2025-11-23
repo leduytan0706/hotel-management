@@ -2,6 +2,7 @@
 using HotelManagement.Business.Interfaces;
 using HotelManagement.Data;
 using HotelManagement.Models;
+using HotelManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +162,24 @@ namespace HotelManagement.Business.Services
         public IEnumerable<RoomDto> GetAllRooms()
         {
             return _repo.GetAllRooms();
+        }
+
+        public RoomDto GetRoomById(int roomId)
+        {
+            var room = _repo.GetById(roomId);
+            return new RoomDto
+            {
+                RoomId = room.RoomId,
+                RoomNumber = room.RoomNumber,
+                RoomTypeId = room.RoomTypeId,
+                RoomTypeName = room.Type.Name,
+                Status = room.Status,
+                StatusName = room.Status.GetDescription(),
+                Description = room.Description,
+                DefaultPrice = room.DefaultPrice,
+                MaximumCapacity = room.Type.MaximumCapacity,
+                UpdatedAt = room.UpdatedAt
+            };
         }
 
         public IEnumerable<RoomDto> SearchRooms(

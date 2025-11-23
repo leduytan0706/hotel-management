@@ -27,6 +27,7 @@ namespace HotelManagement.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookingId { get; set; }
+        public string BookingNumber { get; set; }
         public int? CustomerId { get; set; }
         public string FullName { get; set; }
         public string Phone { get; set; }
