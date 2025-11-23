@@ -1,6 +1,9 @@
-﻿using HotelManagement.Models;
+﻿using HotelManagement.Business.DTOs;
+using HotelManagement.Models;
+using HotelManagement.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +24,25 @@ namespace HotelManagement.Data
             return _dbSet.Where(r => r.Status.Equals(RoomStatus.Booked)).ToList();
         }
 
-        public IEnumerable<Room> GetAllRooms()
+        public IEnumerable<RoomDto> GetAllRooms()
         {
-            return _dbSet.Where(r => !r.IsDeleted).ToList();
+            return _dbSet
+                .Where(r => !r.IsDeleted)
+                .Include(r => r.Type)
+                .ToList()
+                .Select(r => new RoomDto
+                {
+                    RoomId = r.RoomId,
+                    RoomNumber = r.RoomNumber,
+                    RoomTypeId = r.RoomTypeId,
+                    RoomTypeName = r.Type.Name,
+                    Status = r.Status,
+                    StatusName = r.Status.GetDescription(),
+                    Description = r.Description,
+                    DefaultPrice = r.DefaultPrice,
+                    MaximumCapacity = r.Type.MaximumCapacity,
+                    UpdatedAt = r.UpdatedAt
+                });
         }
 
         public decimal GetRoomDefaultPrice(int roomId)

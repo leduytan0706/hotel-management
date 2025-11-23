@@ -26,5 +26,22 @@ namespace HotelManagement.Business.Services
         {
             return _repo.GetBookingServicesCountByService(serviceId);
         }
+
+        public bool CreateBookingServices(int bookingId, List<Models.BookingService> bookingServices)
+        {
+            List<Models.BookingService> servicesToAdd = bookingServices.Select(s => new Models.BookingService
+            {
+                BookingId = bookingId,
+                ServiceId = s.ServiceId,
+                UnitPrice = s.UnitPrice,
+                Quantity = s.Quantity,
+                TotalPrice = s.UnitPrice * s.Quantity,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            }).ToList();
+            _repo.InsertMany(servicesToAdd);
+
+            return true;
+        }
     }
 }

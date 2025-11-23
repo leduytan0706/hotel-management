@@ -17,9 +17,11 @@ namespace HotelManagement.Models
         public int ServiceId { get; set; }
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         public virtual Booking Booking { get; set; }
         public virtual Service Service { get; set; }
 
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

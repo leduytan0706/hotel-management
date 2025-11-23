@@ -18,6 +18,8 @@ namespace HotelManagement.Models
         public string Description { get; set; }
         public decimal UnitPrice { get; set; }
 
+        public bool IsAvailable { get; set; } = true;
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 

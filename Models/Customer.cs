@@ -20,10 +20,9 @@ namespace HotelManagement.Models
         public string Email { get; set; }
 
         public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; }
-
-        public virtual Booking Booking { get; set; }
 
     }
 }

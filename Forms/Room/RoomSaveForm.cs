@@ -20,9 +20,8 @@ namespace HotelManagement.Forms.Room
         private RoomTypeService _roomTypeService;
         private RoomService _roomService;
         public bool IsUpdate = false;
-        public Models.Room room;
+        public Models.Room SelectedRoom;
         private List<Models.RoomType> roomTypes;
-        private List<ItemCombo> roomStatuses;
         private int selectedRoomTypeId;
         private RoomStatus selectedStatus;
         public RoomSaveForm()
@@ -31,18 +30,6 @@ namespace HotelManagement.Forms.Room
             _roomTypeService = new RoomTypeService();
             _roomService = new RoomService();
             roomTypes = _roomTypeService.GetAllRoomTypes().ToList();
-            Dictionary<int, string> roomTypeData = new Dictionary<int, string>
-            {
-                { 0, "Đã đặt" },
-                { 1, "Trống" },
-                { 2, "Sửa chữa" },
-                { 3, "Không dùng" }
-            };
-            roomStatuses = new List<ItemCombo>();
-            foreach (var pair in roomTypeData)
-            {
-                roomStatuses.Add(new ItemCombo(pair.Key, pair.Value));
-            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -56,46 +43,28 @@ namespace HotelManagement.Forms.Room
             this.cbRoomType.DisplayMember = "Name";
             this.cbRoomType.ValueMember = "RoomTypeId";
 
-            this.cbStatus.DataSource = Enum.GetValues(typeof(RoomStatus));
-            this.cbStatus.SelectedItem = RoomStatus.Free;
-            if (IsUpdate && room != null)
+            this.cbStatus.DataSource = EnumHelper.ToList<RoomStatus>();
+            this.cbStatus.DisplayMember = "Display";
+            this.cbStatus.ValueMember = "Value";
+            if (IsUpdate && SelectedRoom != null)
             {
                 this.Text = "Cập nhật phòng";
-                this.txtBoxRoomNumber.Text = room.RoomNumber;
-                this.txtBoxDesc.Text = room.Description;
-                this.cbRoomType.SelectedValue = room.RoomTypeId;
-                this.cbStatus.SelectedItem = room.Status;
-                this.txtBoxPrice.Text = room.DefaultPrice.ToString();
-                this.txtBoxMaxCap.Text = room.MaximumCapacity.ToString();
+                this.txtBoxRoomNumber.Text = SelectedRoom.RoomNumber;
+                this.txtBoxDesc.Text = SelectedRoom.Description;
+                this.cbRoomType.SelectedValue = SelectedRoom.RoomTypeId;
+                this.cbStatus.SelectedValue = SelectedRoom.Status;
+                this.txtBoxPrice.Text = SelectedRoom.DefaultPrice.ToString();
+                this.txtBoxMaxCap.Text = SelectedRoom.MaximumCapacity.ToString();
                 this.btnSave.Text = "Cập nhật";
             }
             else
             {
-                this.cbStatus.SelectedValue = 1;
-                this.cbStatus.Enabled = false;
+                this.cbStatus.SelectedValue = RoomStatus.Free;
+                //this.cbStatus.Enabled = false;
                 this.Text = "Thêm phòng mới";
                 this.btnSave.Text = "Thêm mới";
             }
             
-        }
-
-        private void cbRoomType_SelectedIndexChange(object sender, EventArgs e)
-        {
-            if (cbRoomType.SelectedValue is DataRowView drv)
-            {
-                selectedRoomTypeId = Convert.ToInt32(drv["RoomTypeId"]);
-            }
-            else
-            {
-                selectedRoomTypeId = Convert.ToInt32(cbRoomType.SelectedValue);
-            }
-            Models.RoomType selectedRoomType = roomTypes.FirstOrDefault(t => t.RoomTypeId == selectedRoomTypeId);
-            if (selectedRoomType != null)
-            {
-                this.txtBoxPrice.Text = selectedRoomType.BasePricePerNight.ToString();
-                this.txtBoxMaxCap.Text = selectedRoomType.MaximumCapacity.ToString();
-
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -105,13 +74,13 @@ namespace HotelManagement.Forms.Room
             {
                 if (IsUpdate)
                 {
-                    room.RoomNumber = this.txtBoxRoomNumber.Text;
-                    room.Description = this.txtBoxDesc.Text;
-                    room.DefaultPrice = decimal.Parse(this.txtBoxPrice.Text);
-                    room.MaximumCapacity = int.Parse(this.txtBoxMaxCap.Text);
-                    room.RoomTypeId = selectedRoomTypeId;
-                    room.Status = selectedStatus;
-                    bool result = _roomService.UpdateRoom(room);
+                    SelectedRoom.RoomNumber = this.txtBoxRoomNumber.Text;
+                    SelectedRoom.Description = this.txtBoxDesc.Text;
+                    SelectedRoom.DefaultPrice = decimal.Parse(this.txtBoxPrice.Text);
+                    SelectedRoom.MaximumCapacity = int.Parse(this.txtBoxMaxCap.Text);
+                    SelectedRoom.RoomTypeId = selectedRoomTypeId;
+                    SelectedRoom.Status = selectedStatus;
+                    bool result = _roomService.UpdateRoom(SelectedRoom);
                     if (!result)
                     {
                         this.DialogResult = DialogResult.Cancel;
@@ -127,7 +96,7 @@ namespace HotelManagement.Forms.Room
                 }
                 else
                 {
-                    room = new Models.Room
+                    SelectedRoom = new Models.Room
                     {
                         RoomNumber = this.txtBoxRoomNumber.Text,
                         Description = this.txtBoxDesc.Text,
@@ -135,7 +104,7 @@ namespace HotelManagement.Forms.Room
                         DefaultPrice = decimal.Parse(this.txtBoxPrice.Text),
                         MaximumCapacity = int.Parse(this.txtBoxMaxCap.Text)
                     };
-                    bool result = _roomService.CreateRoom(room);
+                    bool result = _roomService.CreateRoom(SelectedRoom);
                     if (!result)
                     {
                         this.DialogResult = DialogResult.Cancel;
@@ -157,9 +126,35 @@ namespace HotelManagement.Forms.Room
 
         }
 
-        private void cbStatus_SelectedIndexChange(object sender, EventArgs e)
+        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedStatus = (RoomStatus)this.cbStatus.SelectedItem;
+            if (cbStatus.SelectedValue is RoomStatus status)
+            {
+                selectedStatus = status;
+            }
+        }
+
+        private void cbRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbRoomType.SelectedValue is int id)
+            {
+                selectedRoomTypeId = id;
+            }
+            else if (cbRoomType.SelectedValue is Models.RoomType roomType)
+            {
+                selectedRoomTypeId = roomType.RoomTypeId;
+            }
+            else
+            {
+                selectedRoomTypeId = Convert.ToInt32(cbRoomType.SelectedValue);
+            }
+            Models.RoomType selectedRoomType = roomTypes.FirstOrDefault(t => t.RoomTypeId == selectedRoomTypeId);
+            if (selectedRoomType != null)
+            {
+                this.txtBoxPrice.Text = selectedRoomType.BasePricePerNight.ToString();
+                this.txtBoxMaxCap.Text = selectedRoomType.MaximumCapacity.ToString();
+
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Forms.Room;
 using HotelManagement.Forms.RoomType;
+using HotelManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace HotelManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Console.WriteLine(PasswordHelper.EncryptPassword("hotel@123"));
             Application.Run(new RoomForm());
         }
     }

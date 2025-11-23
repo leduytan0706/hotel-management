@@ -1,4 +1,5 @@
-﻿using HotelManagement.Business.Interfaces;
+﻿using HotelManagement.Business.DTOs;
+using HotelManagement.Business.Interfaces;
 using HotelManagement.Data;
 using HotelManagement.Models;
 using System;
@@ -14,6 +15,7 @@ namespace HotelManagement.Business.Services
         private readonly RoomRepository _repo;
         private readonly RoomTypeRepository _roomTypeRepo;
         private readonly RoomPriceRepository _roomPriceRepo;
+        private readonly BookingRepository _bookingRepo;
 
         public RoomService()
         {
@@ -21,6 +23,7 @@ namespace HotelManagement.Business.Services
             _repo = new RoomRepository(context);
             _roomTypeRepo = new RoomTypeRepository(context);
             _roomPriceRepo = new RoomPriceRepository(context);
+            _bookingRepo = new BookingRepository(context);
         }
         public bool CreateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices)
         {
@@ -147,15 +150,20 @@ namespace HotelManagement.Business.Services
             if (existingRoomPrices == null || existingRoomPrices.Any()) {
                 _roomPriceRepo.DeleteMany(existingRoomPrices.ToList());
             }
+            int bookingCount = _bookingRepo.GetBookingCountByRoom(roomId);
+            if (bookingCount > 0)
+            {
+                throw new Exception("Không thể xóa phòng vì đã có hóa đơn liên quan. Hãy chuyển trạng thái phòng sang không sử dụng.");
+            }
 
             return _repo.DisableRoom(roomId);
         }
-        public IEnumerable<Room> GetAllRooms()
+        public IEnumerable<RoomDto> GetAllRooms()
         {
             return _repo.GetAllRooms();
         }
 
-        public IEnumerable<Room> SearchRooms(
+        public IEnumerable<RoomDto> SearchRooms(
             string searchTerm = "",
             int roomTypeId = 0,
             decimal minPrice = 0,
@@ -164,7 +172,7 @@ namespace HotelManagement.Business.Services
             int maxCapacity = int.MaxValue
             )
         {
-            IEnumerable<Room> filteredRooms = _repo.GetAllRooms();
+            IEnumerable<RoomDto> filteredRooms = _repo.GetAllRooms();
             if (roomTypeId > 0)
             {
                 filteredRooms = filteredRooms.Where(r => r.RoomTypeId == roomTypeId);

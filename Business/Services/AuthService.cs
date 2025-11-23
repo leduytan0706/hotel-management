@@ -15,6 +15,11 @@ namespace HotelManagement.Business.Services
     public class AuthService: IAuthService
     {
         private readonly UserRepository _repo;
+        public AuthService()
+        {
+            var context = new HotelDbContext();
+            _repo = new UserRepository(context);
+        }
         public bool Login(string username, string password)
         {
             User user = _repo.GetUserByUsername(username);

@@ -47,7 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbRoomType = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnDetail = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -78,11 +77,11 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(982, 653);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1482, 753);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel4
@@ -92,37 +91,40 @@
             this.flowLayoutPanel4.Controls.Add(this.label6);
             this.flowLayoutPanel4.Controls.Add(this.txtBoxMaxCap);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(395, 68);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(595, 55);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(386, 59);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(586, 46);
             this.flowLayoutPanel4.TabIndex = 4;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 32);
+            this.label4.Size = new System.Drawing.Size(74, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Số người";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtBoxMinCap
             // 
+            this.txtBoxMinCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxMinCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMinCap.Location = new System.Drawing.Point(83, 3);
             this.txtBoxMinCap.Name = "txtBoxMinCap";
-            this.txtBoxMinCap.Size = new System.Drawing.Size(92, 26);
+            this.txtBoxMinCap.Size = new System.Drawing.Size(214, 26);
             this.txtBoxMinCap.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(181, 0);
+            this.label6.Location = new System.Drawing.Point(303, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 3;
@@ -130,10 +132,12 @@
             // 
             // txtBoxMaxCap
             // 
+            this.txtBoxMaxCap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxMaxCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxMaxCap.Location = new System.Drawing.Point(202, 3);
+            this.txtBoxMaxCap.Location = new System.Drawing.Point(324, 3);
             this.txtBoxMaxCap.Name = "txtBoxMaxCap";
-            this.txtBoxMaxCap.Size = new System.Drawing.Size(105, 26);
+            this.txtBoxMaxCap.Size = new System.Drawing.Size(212, 26);
             this.txtBoxMaxCap.TabIndex = 4;
             // 
             // flowLayoutPanel3
@@ -143,36 +147,39 @@
             this.flowLayoutPanel3.Controls.Add(this.label5);
             this.flowLayoutPanel3.Controls.Add(this.txtBoxMaxPrice);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 68);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 55);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(386, 59);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(586, 46);
             this.flowLayoutPanel3.TabIndex = 3;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 32);
+            this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Khoảng giá";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtBoxMinPrice
             // 
+            this.txtBoxMinPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxMinPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMinPrice.Location = new System.Drawing.Point(101, 3);
             this.txtBoxMinPrice.Name = "txtBoxMinPrice";
-            this.txtBoxMinPrice.Size = new System.Drawing.Size(82, 26);
+            this.txtBoxMinPrice.Size = new System.Drawing.Size(197, 26);
             this.txtBoxMinPrice.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(189, 0);
+            this.label5.Location = new System.Drawing.Point(304, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 2;
@@ -181,19 +188,21 @@
             // 
             // txtBoxMaxPrice
             // 
+            this.txtBoxMaxPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxMaxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxMaxPrice.Location = new System.Drawing.Point(210, 3);
+            this.txtBoxMaxPrice.Location = new System.Drawing.Point(325, 3);
             this.txtBoxMaxPrice.Name = "txtBoxMaxPrice";
-            this.txtBoxMaxPrice.Size = new System.Drawing.Size(98, 26);
+            this.txtBoxMaxPrice.Size = new System.Drawing.Size(226, 26);
             this.txtBoxMaxPrice.TabIndex = 3;
             // 
             // btnSearch
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(787, 3);
+            this.btnSearch.Location = new System.Drawing.Point(1187, 3);
             this.btnSearch.Name = "btnSearch";
             this.tableLayoutPanel1.SetRowSpan(this.btnSearch, 2);
-            this.btnSearch.Size = new System.Drawing.Size(192, 124);
+            this.btnSearch.Size = new System.Drawing.Size(292, 98);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -206,27 +215,28 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(386, 59);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(586, 46);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 32);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Từ khóa";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtBoxSearchTerm
             // 
+            this.txtBoxSearchTerm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBoxSearchTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxSearchTerm.Location = new System.Drawing.Point(77, 3);
             this.txtBoxSearchTerm.Name = "txtBoxSearchTerm";
-            this.txtBoxSearchTerm.Size = new System.Drawing.Size(231, 26);
+            this.txtBoxSearchTerm.Size = new System.Drawing.Size(474, 26);
             this.txtBoxSearchTerm.TabIndex = 1;
             // 
             // flowLayoutPanel2
@@ -234,59 +244,51 @@
             this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Controls.Add(this.cbRoomType);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(395, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(595, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(386, 59);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(586, 46);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 34);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Phân loại";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbRoomType
             // 
+            this.cbRoomType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoomType.FormattingEnabled = true;
             this.cbRoomType.Location = new System.Drawing.Point(87, 3);
             this.cbRoomType.Name = "cbRoomType";
-            this.cbRoomType.Size = new System.Drawing.Size(224, 28);
+            this.cbRoomType.Size = new System.Drawing.Size(446, 28);
             this.cbRoomType.TabIndex = 1;
             this.cbRoomType.SelectedIndexChanged += new System.EventHandler(this.cbRoomType_SelectedIndexChange);
             // 
             // flowLayoutPanel5
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel5, 2);
-            this.flowLayoutPanel5.Controls.Add(this.btnDetail);
             this.flowLayoutPanel5.Controls.Add(this.btnAdd);
             this.flowLayoutPanel5.Controls.Add(this.btnUpdate);
             this.flowLayoutPanel5.Controls.Add(this.btnDelete);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 590);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 679);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(778, 60);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1178, 71);
             this.flowLayoutPanel5.TabIndex = 5;
-            // 
-            // btnDetail
-            // 
-            this.btnDetail.Location = new System.Drawing.Point(3, 3);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(123, 36);
-            this.btnDetail.TabIndex = 3;
-            this.btnDetail.Text = "Chi tiết";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(132, 3);
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(123, 36);
             this.btnAdd.TabIndex = 0;
@@ -296,7 +298,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(261, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(132, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(123, 36);
             this.btnUpdate.TabIndex = 1;
@@ -306,7 +308,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(390, 3);
+            this.btnDelete.Location = new System.Drawing.Point(261, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(123, 36);
             this.btnDelete.TabIndex = 2;
@@ -319,18 +321,19 @@
             this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvRoom, 3);
             this.dgvRoom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRoom.Location = new System.Drawing.Point(3, 133);
+            this.dgvRoom.Location = new System.Drawing.Point(3, 107);
             this.dgvRoom.Name = "dgvRoom";
             this.dgvRoom.RowHeadersWidth = 51;
             this.dgvRoom.RowTemplate.Height = 24;
-            this.dgvRoom.Size = new System.Drawing.Size(976, 451);
+            this.dgvRoom.Size = new System.Drawing.Size(1476, 566);
             this.dgvRoom.TabIndex = 6;
+            this.dgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoom_CellClick);
             // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 653);
+            this.ClientSize = new System.Drawing.Size(1482, 753);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RoomForm";
             this.Text = "RoomForm";
@@ -374,7 +377,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.DataGridView dgvRoom;
     }
 }

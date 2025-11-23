@@ -20,5 +20,10 @@ namespace HotelManagement.Data
         {
             return _dbSet.Where(b => b.CustomerId==customerId).ToList();
         }
+
+        public int GetBookingCountByRoom(int roomId)
+        {
+            return _dbSet.Where(b => b.RoomId == roomId).Count();
+        }
     }
 }

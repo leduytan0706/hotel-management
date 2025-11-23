@@ -20,5 +20,10 @@ namespace HotelManagement.Data
                 log.Status != RoomStatus.Cleaning
             );
         }
+
+        public RoomSchedule GetByBooking(int bookingId)
+        {
+            return _dbSet.FirstOrDefault(rs => rs.BookingId == bookingId);
+        }
     }
 }

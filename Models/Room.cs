@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,11 +11,18 @@ namespace HotelManagement.Models
 {
     public enum RoomStatus
     {
+        [Description("Đang đặt")]
         Booked,
+        [Description("Trống")]
         Free,
+        [Description("Đang sửa chữa")]
         UnderRepair,
+        [Description("Không sử dụng")]
         Inactive,
-        Occupied
+        [Description("Đang sử dụng")]
+        Occupied,
+        [Description("Đang dọn dẹp")]
+        Cleaning
     }
     public class Room
     {
@@ -34,6 +42,6 @@ namespace HotelManagement.Models
 
         public virtual RoomType Type { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual ICollection<RoomPrice> CustomPrices { get; set; }
+        //public virtual ICollection<RoomPrice> CustomPrices { get; set; }
     }
 }

@@ -56,16 +56,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\DTOs\RoomDto.cs" />
     <Compile Include="Business\Interfaces\IAuthService.cs" />
+    <Compile Include="Business\Interfaces\IBookingService.cs" />
     <Compile Include="Business\Interfaces\IRoomPriceService.cs" />
     <Compile Include="Business\Interfaces\IRoomService.cs" />
     <Compile Include="Business\Interfaces\IRoomTypeService.cs" />
+    <Compile Include="Business\Interfaces\IServiceService.cs" />
     <Compile Include="Business\Interfaces\IServiceTypeService.cs" />
     <Compile Include="Business\Interfaces\IUserService.cs" />
     <Compile Include="Business\Services\AuthService.cs" />
+    <Compile Include="Business\Services\BookingService.cs" />
+    <Compile Include="Business\Services\BookingServiceService.cs" />
     <Compile Include="Business\Services\RoomPriceService.cs" />
     <Compile Include="Business\Services\RoomService.cs" />
     <Compile Include="Business\Services\RoomTypeService.cs" />
+    <Compile Include="Business\Services\ServiceService.cs" />
     <Compile Include="Business\Services\ServiceTypeService.cs" />
     <Compile Include="Business\Services\UserService.cs" />
     <Compile Include="Data\BaseRepository.cs" />
@@ -76,6 +82,7 @@
     <Compile Include="Data\InvoiceRepository.cs" />
     <Compile Include="Data\RoomPriceRepository.cs" />
     <Compile Include="Data\RoomRepository.cs" />
+    <Compile Include="Data\RoomScheduleRepository.cs" />
     <Compile Include="Data\RoomTypeRepository.cs" />
     <Compile Include="Data\ServiceRepository.cs" />
     <Compile Include="Data\ServiceTypeRepository.cs" />
@@ -91,6 +98,12 @@
     </Compile>
     <Compile Include="Forms\Auth\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Booking\BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Booking\BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RoomType\RoomTypeDetailForm.cs">
       <SubType>Form</SubType>
@@ -122,21 +135,9 @@
     <Compile Include="Forms\Room\RoomSaveForm.Designer.cs">
       <DependentUpon>RoomSaveForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202511081019550_InitialCreate.cs" />
-    <Compile Include="Migrations\202511081019550_InitialCreate.Designer.cs">
-      <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511110114026_InitialCreate1.cs" />
-    <Compile Include="Migrations\202511110114026_InitialCreate1.Designer.cs">
-      <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511220302197_UpdateModels_01.cs" />
-    <Compile Include="Migrations\202511220302197_UpdateModels_01.Designer.cs">
-      <DependentUpon>202511220302197_UpdateModels_01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202511220303479_UpdateModels_02.cs" />
-    <Compile Include="Migrations\202511220303479_UpdateModels_02.Designer.cs">
-      <DependentUpon>202511220303479_UpdateModels_02.cs</DependentUpon>
+    <Compile Include="Migrations\202511230047544_InitialCreate.cs" />
+    <Compile Include="Migrations\202511230047544_InitialCreate.Designer.cs">
+      <DependentUpon>202511230047544_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomPrice.cs" />
+    <Compile Include="Models\RoomSchedule.cs" />
     <Compile Include="Models\RoomType.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ServiceType.cs" />
@@ -152,6 +154,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\AuthState.cs" />
+    <Compile Include="Utils\EnumExtensions.cs" />
+    <Compile Include="Utils\EnumHelper.cs" />
     <Compile Include="Utils\ItemCombo.cs" />
     <Compile Include="Utils\MessageHelper.cs" />
     <Compile Include="Utils\PasswordHelper.cs" />
@@ -161,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Auth\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Booking\BookingForm.resx">
+      <DependentUpon>BookingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomType\RoomTypeDetailForm.resx">
       <DependentUpon>RoomTypeDetailForm.cs</DependentUpon>
@@ -177,17 +184,8 @@
     <EmbeddedResource Include="Forms\Room\RoomSaveForm.resx">
       <DependentUpon>RoomSaveForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511081019550_InitialCreate.resx">
-      <DependentUpon>202511081019550_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511110114026_InitialCreate1.resx">
-      <DependentUpon>202511110114026_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511220302197_UpdateModels_01.resx">
-      <DependentUpon>202511220302197_UpdateModels_01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202511220303479_UpdateModels_02.resx">
-      <DependentUpon>202511220303479_UpdateModels_02.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202511230047544_InitialCreate.resx">
+      <DependentUpon>202511230047544_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -215,7 +213,6 @@
   <ItemGroup>
     <Folder Include="Business\Interfaces\NewFolder1\" />
     <Folder Include="Forms\BookingService\" />
-    <Folder Include="Forms\Booking\" />
     <Folder Include="Forms\RoomPrice\" />
     <Folder Include="Forms\ServiceType\" />
     <Folder Include="Forms\Service\" />

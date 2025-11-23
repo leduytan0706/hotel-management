@@ -1,4 +1,5 @@
-﻿using HotelManagement.Models;
+﻿using HotelManagement.Business.DTOs;
+using HotelManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace HotelManagement.Business.Interfaces
         bool UpdateRoomAndCustomPrice(Room room, List<RoomPrice> roomPrices);
         bool UpdateRoom(Room room);
         bool DeleteRoom(int roomId);
-        IEnumerable<Room> GetAllRooms();
+        IEnumerable<RoomDto> GetAllRooms();
     }
 }

@@ -15,5 +15,21 @@ namespace HotelManagement.Data
         {
             return _dbSet.Where(d => d.BookingId == bookingId).ToList();
         }
+
+        public IEnumerable<BookingService> GetBookingServicesByService(int serviceId)
+        {
+            return _dbSet.Where(d => d.ServiceId == serviceId).ToList();
+        }
+
+        public int GetBookingServicesCountByService(int serviceId)
+        {
+            return _dbSet.Where(d => d.ServiceId == serviceId).Count();
+        }
+
+        public virtual void InsertMany(List<BookingService> bookingServices)
+        {
+            _dbSet.AddRange(bookingServices);
+            _context.SaveChanges();
+        }
     }
 }

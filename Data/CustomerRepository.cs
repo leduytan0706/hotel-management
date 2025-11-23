@@ -11,16 +11,20 @@ namespace HotelManagement.Data
     {
         public CustomerRepository(HotelDbContext context) : base(context) { }
 
-        public Customer FindByPhone(string phone)
+        public Customer GetByPhone(string phone)
         {
             return _dbSet.FirstOrDefault(c => c.Phone == phone);
         }
 
-        public Customer FindByIdNumber(string idNumber)
+        public Customer GetByIdNumber(string idNumber)
         {
             return _dbSet.FirstOrDefault(c => c.IdNumber == idNumber);
         }
 
+        public int InsertAndReturnId(Customer customer)
+        {
+            return base.InsertAndReturnId(customer, "CustomerId");
+        }
 
     }
 }
